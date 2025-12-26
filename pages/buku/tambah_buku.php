@@ -1,5 +1,5 @@
 <?php
-include '../config/koneksi.php';
+include 'config/koneksi.php';
 
 if (isset($_POST['simpan'])) {
     $judul = $_POST['judul_buku'];
@@ -9,10 +9,10 @@ if (isset($_POST['simpan'])) {
 
     $query = "INSERT INTO buku (judul_buku, penulis, harga, stok) 
               VALUES ('$judul', '$penulis', '$harga', '$stok')";
-    if (mysqli_query($conn, $query)) {
+    if (mysqli_query($koneksi, $query)) {
         header("Location: data_buku.php");
     } else {
-        echo "Gagal menyimpan data: " . mysqli_error($conn);
+        echo "Gagal menyimpan data: " . mysqli_error($koneksi);
     }
 }
 ?>

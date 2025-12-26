@@ -1,5 +1,5 @@
 <?php
-include '../config/koneksi.php';
+include 'config/koneksi.php';
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -25,7 +25,7 @@ include '../config/koneksi.php';
         <tbody>
             <?php
             $no = 1;
-            $query = mysqli_query($conn, "
+            $query = mysqli_query($koneksi, "
                 SELECT n.id_nilai, b.judul_buku, k.nama_kriteria, n.nilai 
                 FROM nilai n 
                 JOIN buku b ON n.id_buku = b.id_buku 

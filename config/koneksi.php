@@ -1,18 +1,12 @@
 <?php
-// Konfigurasi koneksi ke database
-$host = "localhost";        // Nama host (biasanya localhost)
-$user = "root";             // Username MySQL default XAMPP
-$pass = "";                 // Password MySQL (kosong jika default)
-$db   = "spk_buku_terlaris"; // Nama database
+$host = "localhost";
+$user = "root";
+$pass = "123";
+$db   = "spk-pemilihan-buku";
 
-// Membuat koneksi
-$conn = mysqli_connect($host, $user, $pass, $db);
+$koneksi = mysqli_connect($host, $user, $pass, $db);
 
-// Cek koneksi
-if (!$conn) {
+if (!$koneksi) {
     die("Koneksi gagal: " . mysqli_connect_error());
-} else {
-    // Uncomment baris di bawah jika ingin menampilkan pesan sukses
-    // echo "Koneksi berhasil!";
 }
 ?>

@@ -1,8 +1,8 @@
 <?php
-include '../config/koneksi.php';
+include 'config/koneksi.php';
 
 $id = $_GET['id'];
-$data = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM kriteria WHERE id_kriteria='$id'"));
+$data = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT * FROM kriteria WHERE id_kriteria='$id'"));
 
 if (isset($_POST['update'])) {
     $nama = $_POST['nama_kriteria'];
@@ -12,10 +12,10 @@ if (isset($_POST['update'])) {
     $update = "UPDATE kriteria SET 
                nama_kriteria='$nama', bobot='$bobot', tipe='$tipe' 
                WHERE id_kriteria='$id'";
-    if (mysqli_query($conn, $update)) {
+    if (mysqli_query($koneksi, $update)) {
         header("Location: data_kriteria.php");
     } else {
-        echo "Gagal memperbarui data: " . mysqli_error($conn);
+        echo "Gagal memperbarui data: " . mysqli_error($koneksi);
     }
 }
 ?>

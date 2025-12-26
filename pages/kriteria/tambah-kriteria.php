@@ -1,5 +1,5 @@
 <?php
-include '../config/koneksi.php';
+include 'config/koneksi.php';
 
 if (isset($_POST['simpan'])) {
     $nama = $_POST['nama_kriteria'];
@@ -8,10 +8,10 @@ if (isset($_POST['simpan'])) {
 
     $query = "INSERT INTO kriteria (nama_kriteria, bobot, tipe) 
               VALUES ('$nama', '$bobot', '$tipe')";
-    if (mysqli_query($conn, $query)) {
+    if (mysqli_query($koneksi, $query)) {
         header("Location: data_kriteria.php");
     } else {
-        echo "Gagal menyimpan data: " . mysqli_error($conn);
+        echo "Gagal menyimpan data: " . mysqli_error($koneksi);
     }
 }
 ?>

@@ -1,8 +1,8 @@
 <?php
-include '../config/koneksi.php';
+include 'config/koneksi.php';
 
 $id = $_GET['id'];
-$data = mysqli_fetch_assoc(mysqli_query($conn, "
+$data = mysqli_fetch_assoc(mysqli_query($koneksi, "
     SELECT * FROM nilai WHERE id_nilai='$id'
 "));
 
@@ -12,10 +12,10 @@ if (isset($_POST['update'])) {
     $nilai = $_POST['nilai'];
 
     $update = "UPDATE nilai SET id_buku='$id_buku', id_kriteria='$id_kriteria', nilai='$nilai' WHERE id_nilai='$id'";
-    if (mysqli_query($conn, $update)) {
+    if (mysqli_query($koneksi, $update)) {
         header("Location: data_nilai.php");
     } else {
-        echo "Gagal memperbarui data: " . mysqli_error($conn);
+        echo "Gagal memperbarui data: " . mysqli_error($koneksi);
     }
 }
 ?>
@@ -34,7 +34,7 @@ if (isset($_POST['update'])) {
             <label>Judul Buku</label>
             <select name="id_buku" class="form-select" required>
                 <?php
-                $buku = mysqli_query($conn, "SELECT * FROM buku");
+                $buku = mysqli_query($koneksi, "SELECT * FROM buku");
                 while ($b = mysqli_fetch_assoc($buku)) {
                     $selected = ($b['id_buku'] == $data['id_buku']) ? 'selected' : '';
                     echo "<option value='{$b['id_buku']}' $selected>{$b['judul_buku']}</option>";
@@ -47,7 +47,7 @@ if (isset($_POST['update'])) {
             <label>Kriteria</label>
             <select name="id_kriteria" class="form-select" required>
                 <?php
-                $kriteria = mysqli_query($conn, "SELECT * FROM kriteria");
+                $kriteria = mysqli_query($koneksi, "SELECT * FROM kriteria");
                 while ($k = mysqli_fetch_assoc($kriteria)) {
                     $selected = ($k['id_kriteria'] == $data['id_kriteria']) ? 'selected' : '';
                     echo "<option value='{$k['id_kriteria']}' $selected>{$k['nama_kriteria']}</option>";

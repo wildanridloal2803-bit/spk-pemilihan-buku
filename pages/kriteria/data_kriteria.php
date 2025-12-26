@@ -1,5 +1,5 @@
 <?php
-include '../config/koneksi.php';
+include 'config/koneksi.php';
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -25,7 +25,7 @@ include '../config/koneksi.php';
         <tbody>
             <?php
             $no = 1;
-            $query = mysqli_query($conn, "SELECT * FROM kriteria ORDER BY id_kriteria ASC");
+            $query = mysqli_query($koneksi, "SELECT * FROM kriteria ORDER BY id_kriteria ASC");
             while ($row = mysqli_fetch_assoc($query)) {
             ?>
             <tr align="center">

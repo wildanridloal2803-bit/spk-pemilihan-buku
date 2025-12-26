@@ -1,5 +1,5 @@
 <?php
-include '../config/koneksi.php';
+include 'config/koneksi.php';
 
 // Simpan data baru
 if (isset($_POST['simpan'])) {
@@ -7,15 +7,15 @@ if (isset($_POST['simpan'])) {
     $id_kriteria = $_POST['id_kriteria'];
     $nilai = $_POST['nilai'];
 
-    $cek = mysqli_query($conn, "SELECT * FROM nilai WHERE id_buku='$id_buku' AND id_kriteria='$id_kriteria'");
+    $cek = mysqli_query($koneksi, "SELECT * FROM nilai WHERE id_buku='$id_buku' AND id_kriteria='$id_kriteria'");
     if (mysqli_num_rows($cek) > 0) {
         echo "<script>alert('Nilai untuk kombinasi Buku dan Kriteria ini sudah ada!');</script>";
     } else {
-        $insert = mysqli_query($conn, "INSERT INTO nilai (id_buku, id_kriteria, nilai) VALUES ('$id_buku','$id_kriteria','$nilai')");
+        $insert = mysqli_query($koneksi, "INSERT INTO nilai (id_buku, id_kriteria, nilai) VALUES ('$id_buku','$id_kriteria','$nilai')");
         if ($insert) {
             header("Location: data_nilai.php");
         } else {
-            echo "Gagal menyimpan data: " . mysqli_error($conn);
+            echo "Gagal menyimpan data: " . mysqli_error($koneksi);
         }
     }
 }
@@ -36,7 +36,7 @@ if (isset($_POST['simpan'])) {
             <select name="id_buku" class="form-select" required>
                 <option value="">-- Pilih Buku --</option>
                 <?php
-                $buku = mysqli_query($conn, "SELECT * FROM buku");
+                $buku = mysqli_query($koneksi, "SELECT * FROM buku");
                 while ($b = mysqli_fetch_assoc($buku)) {
                     echo "<option value='{$b['id_buku']}'>{$b['judul_buku']}</option>";
                 }
@@ -49,7 +49,7 @@ if (isset($_POST['simpan'])) {
             <select name="id_kriteria" class="form-select" required>
                 <option value="">-- Pilih Kriteria --</option>
                 <?php
-                $kriteria = mysqli_query($conn, "SELECT * FROM kriteria");
+                $kriteria = mysqli_query($koneksi, "SELECT * FROM kriteria");
                 while ($k = mysqli_fetch_assoc($kriteria)) {
                     echo "<option value='{$k['id_kriteria']}'>{$k['nama_kriteria']}</option>";
                 }
