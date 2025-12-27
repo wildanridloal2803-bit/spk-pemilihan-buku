@@ -1,12 +1,15 @@
 <?php
-include 'config/koneksi.php';
 $id = $_GET['id'];
 
 $hapus = mysqli_query($koneksi, "DELETE FROM kriteria WHERE id_kriteria='$id'");
 
 if ($hapus) {
-    header("Location: data_kriteria.php");
+    $_SESSION['status'] = 'Berhasil!';
+        $_SESSION['pesan'] = 'Data kriteria berhasil dihapus';
+        $_SESSION['icon'] = 'success';
 } else {
-    echo "Gagal menghapus data: " . mysqli_error($koneksi);
+    $_SESSION['status'] = 'Gagal!';
+        $_SESSION['pesan'] = 'Terjadi kesalahan: ' . mysqli_error($koneksi);
+        $_SESSION['icon'] = 'error';
 }
 ?>

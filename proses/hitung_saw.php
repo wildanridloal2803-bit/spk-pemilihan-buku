@@ -77,5 +77,5 @@ foreach($buku_data as $res){
 }
 
 // Redirect kembali ke halaman hasil
-header("Location: ../index.php?page=hasil_saw");
+header("Location: ../dashboard.php?page=hasil_saw");
 ?>
