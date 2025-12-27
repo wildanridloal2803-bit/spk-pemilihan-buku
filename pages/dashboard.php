@@ -87,7 +87,8 @@ while($g = mysqli_fetch_assoc($q_grafik)){
     <div class="welcome-banner">
         <div class="circle-deco c1"></div>
         <div class="circle-deco c2"></div>
-        <h2>Halo, Admin Aliyah Agency! 👋</h2>
+        <h2>Halo, Admin Aliyah Agency! 
+        </h2>
         <p>Selamat datang di Sistem Pendukung Keputusan Pemilihan Buku Terlaris (Metode SAW).</p>
     </div>
 
