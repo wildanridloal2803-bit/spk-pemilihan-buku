@@ -133,6 +133,39 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
         }
         ?>
     </main>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<?php if(isset($_SESSION['status']) && $_SESSION['status'] != '') { ?>
+        <script>
+            Swal.fire({
+                title: '<?php echo $_SESSION['status']; ?>',
+                text: '<?php echo $_SESSION['pesan']; ?>',
+                icon: '<?php echo $_SESSION['icon']; ?>',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'OK'
+            });
+        </script>
+        <?php unset($_SESSION['status']); unset($_SESSION['pesan']); unset($_SESSION['icon']); ?>
+    <?php } ?>
 
+    <script>
+        function konfirmasiHapus(event, url) {
+            event.preventDefault(); // Cegah link langsung jalan
+            
+            Swal.fire({
+                title: 'Apakah Anda Yakin?',
+                text: "Data yang dihapus tidak dapat dikembalikan!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Ya, Hapus!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = url; // Lanjut ke link hapus
+                }
+            })
+        }
+    </script>
 </body>
 </html>

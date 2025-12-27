@@ -1,6 +1,7 @@
 <h2>Hasil Perangkingan Buku Terlaris (Metode SAW)</h2>
 
-<a href="proses/hitung_saw.php" class="btn-hitung" style="background:blue; color:white; padding:10px; text-decoration:none;">Hitung Ulang / Refresh Data</a>
+<!-- <a href="../proses/hitung_saw.php" class="btn-hitung" style="background:blue; color:white; padding:10px; text-decoration:none;">Hitung Ulang / Refresh Data</a> -->
+ <a href="/spk-pemilihan-buku/proses/hitung_saw.php" class="btn-hitung" style="background:blue; color:white; padding:10px; text-decoration:none;">Hitung Ulang / Refresh Data</a>
 <br><br>
 
 <table border="1" cellpadding="10" cellspacing="0" width="100%">
